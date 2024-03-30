@@ -28,13 +28,17 @@ import {
   z,
 } from "zod";
 import { toPascalCase } from "./to-pascal-case.js";
-import { isPromise } from "util/types";
+
 
 const IS_ZOD_CLASS = Symbol.for("zod-class");
 
 type Ctor<T = any> = {
   new (input: any): T;
 };
+
+const isPromise = (value: unknown): boolean => {
+  return value instanceof Promise
+}
 
 export interface ZodClass<
   Members = any,
